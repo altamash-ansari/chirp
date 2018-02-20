@@ -22,8 +22,8 @@ gulp.task('build',function(cb) {
   })
   .bundle()
   .pipe(source('bundle.js'))
-  // .pipe(buffer())
-  // .pipe(plugins.uglify())
+  .pipe(buffer())
+  .pipe(plugins.uglify())
   .pipe(gulp.dest('./client'));
 });
 

@@ -58,6 +58,8 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "scripts": {
-    "watch": "./node_modules/.bin/watchify client/js/index.js -o client/bundle.js"
+    "watch": "./node_modules/.bin/watchify client/js/index.js -o client/bundle.js",
+    "build": "./node_modules/.bin/gulp build",
+    "start": "node app.js"
   }
 }
