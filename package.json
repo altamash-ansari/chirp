@@ -1,0 +1,63 @@
+{
+  "name": "chirp",
+  "version": "2.0.0",
+  "dependencies": {
+    "built-extension-sdk": "file:custom-packages/built-extension-sdk-1.0.0.tgz",
+    "built.io": "file:custom-packages/built.io-4.2.0.tgz",
+    "built.io-browserify": "file:custom-packages/built.io-browserify-4.2.0.tgz",
+    "jquery": "2.2.4",
+    "node-lessify": "0.0.6",
+    "path": "^0.4.9",
+    "ramda": "*",
+    "react": "0.12.2",
+    "react-image-component": "^0.2.1",
+    "react-infinite-scroll": "^0.1.5",
+    "react-photo-grid": "^1.0.2",
+    "react-router": "0.11.6",
+    "reflux": "0.2.3",
+    "rest": "*",
+    "underscore": "^1.7.0",
+    "lodash": "*",
+    "moment": "^2.8.4",
+    "when": "3.7.3"
+  },
+  "browserify": {
+    "transform": [
+      "cssify",
+      "reactify"
+    ]
+  },
+  "browserify-shim": {},
+  "devDependencies": {
+    "vinyl": "*",
+    "browserify": "*",
+    "chai": "*",
+    "chai-as-promised": "*",
+    "chai-fuzzy": "*",
+    "cssify": "*",
+    "gulp": "*",
+    "reactify": "*",
+    "watchify": "*",
+    "gulp-add-src": "^0.2.0",
+    "gulp-buffer": "0.0.2",
+    "gulp-clean": "^0.3.1",
+    "gulp-cog": "^0.1.2",
+    "gulp-concat": "^2.4.2",
+    "gulp-json-editor": "^2.2.1",
+    "gulp-load-plugins": "^0.7.1",
+    "gulp-replace": "*",
+    "gulp-rimraf": "^0.1.1",
+    "gulp-run": "^1.6.4",
+    "gulp-shell": "^0.2.10",
+    "gulp-uglify": "^1.0.1",
+    "gulp-zip": "^2.0.2",
+    "rimraf": "^2.2.8",
+    "run-sequence": "^1.0.2",
+    "semver": "^4.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0"
+  },
+  "scripts": {
+    "watch": "./node_modules/.bin/watchify client/js/index.js -o client/bundle.js"
+  }
+}

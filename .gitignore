@@ -1,0 +1,11 @@
+node_modules
+mochawesome-reports
+.idea
+._.DS_Store
+.DS_Store
+*.log
+*.ipc
+*.pid
+dump.rdb
+.vscode/
+package-lock.json
