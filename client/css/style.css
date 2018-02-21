@@ -1,3 +1,12 @@
+@import '../libraries/mentions/jquery.mentionsInput.css';
+@import '../libraries/bootstrap/bootstrap.css';
+@import 'bootstrap-custom-template.css';
+@import 'animate.css';
+@import '../libraries/cropper/cropper.css';
+@import '../libraries/owl-graphics/owl-carousel/owl.carousel.css';
+@import '../libraries/owl-graphics/owl-carousel/owl.theme.css';
+@import '../libraries/light-gallery/css/lightGallery.css';
+
 html {
   position: relative;
   height: 100%;
@@ -7,7 +16,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  -webkit-backface-visibility: hidden;
+  /* -webkit-backface-visibility: hidden; */
   overflow-x: hidden;
   min-height: 100%;
   position: relative;
@@ -89,7 +98,7 @@ body > div > .container {
 */
 
 .landing-page {
-  background: url('img/banner.jpg');
+  background: url('../img/banner.jpg');
   background-position: center center;
   background-size: cover;
   margin-bottom: 0;
@@ -193,13 +202,12 @@ body > div > .container {
   float: left;
   margin-right: 5px;
   margin-top: 0;
-  -moz-background-origin: 1px;
+  /* -moz-background-origin: 1px; */
   -webkit-border-radius: 1px;
      -moz-border-radius: 1px;
       -ms-border-radius: 1px;
        -o-border-radius: 1px;
           border-radius: 1px;
-  }
 }
 
 .mentions-input-box .mentions-autocomplete-list li:hover,
@@ -514,7 +522,7 @@ body > div > .container {
   -webkit-transition: all ease-in-out 0.05s 0;
      -moz-transition: all ease-in-out 0.05s 0;
       -ms-transition: all ease-in-out 0.05s 0;
-       -0-transition: all ease-in-out 0.05s 0;
+       -o-transition: all ease-in-out 0.05s 0;
           transition: all ease-in-out 0.05s 0;
 }
 

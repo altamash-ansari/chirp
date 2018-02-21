@@ -20,30 +20,20 @@ jQuery.event.props.push('dataTransfer'); // This is to inform JQuery that dataTr
 _          = require('underscore');
 notify     = require('./../libraries/notify.min.js');
 textntags  = require('./../libraries/mentions/jquery.mentionsInput.js');
-require('./../libraries/mentions/jquery.mentionsInput.css');
 // loading bootstrap
-require('./../libraries/bootstrap/bootstrap.css');
-require('../css/bootstrap-custom-template.css');
-require('../css/animate.css');
 require('./../libraries/bootstrap/bootstrap.js');
 
 //cropper plugin
-require('./../libraries/cropper/cropper.css');
 require('./../libraries/cropper/cropper.js');
 
 //owl-graphics
-require('./../libraries/owl-graphics/owl-carousel/owl.carousel.css');
-require('./../libraries/owl-graphics/owl-carousel/owl.theme.css');
 require('./../libraries/owl-graphics/owl-carousel/owl.carousel.min.js');
 
 //Light gallery
-require("./../libraries/light-gallery/css/lightGallery.css");
 require("./../libraries/light-gallery/js/lightGallery.min.js");
 
 // loading our own css
 // TODO: minify these
-require('../css/style.css');
-require('../css/animate.css');
 // 
 var React         = require('react');
 var Router        = require('react-router');

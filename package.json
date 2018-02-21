@@ -29,15 +29,12 @@
   },
   "browserify-shim": {},
   "devDependencies": {
-    "vinyl": "*",
     "browserify": "*",
     "chai": "*",
     "chai-as-promised": "*",
     "chai-fuzzy": "*",
     "cssify": "*",
     "gulp": "*",
-    "reactify": "*",
-    "watchify": "*",
     "gulp-add-src": "^0.2.0",
     "gulp-buffer": "0.0.2",
     "gulp-clean": "^0.3.1",
@@ -51,11 +48,14 @@
     "gulp-shell": "^0.2.10",
     "gulp-uglify": "^1.0.1",
     "gulp-zip": "^2.0.2",
+    "reactify": "*",
     "rimraf": "^2.2.8",
     "run-sequence": "^1.0.2",
     "semver": "^4.1.0",
+    "vinyl": "*",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.0.0"
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "*"
   },
   "scripts": {
     "watch": "./node_modules/.bin/watchify client/js/index.js -o client/bundle.js",
