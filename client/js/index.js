@@ -14,23 +14,22 @@ Trying to upload images without image payload
 */
 
 // loading jQuery
-$ = jQuery = require('jquery');
+// $ = jQuery = require('jquery');
 jQuery.event.props.push('dataTransfer'); // This is to inform JQuery that dataTransfer is supported
 
 _          = require('underscore');
-notify     = require('./../libraries/notify.min.js');
-textntags  = require('./../libraries/mentions/jquery.mentionsInput.js');
+// notify     = require('./../libraries/notify.min.js');
+// textntags  = require('./../libraries/mentions/jquery.mentionsInput.js');
 // loading bootstrap
-require('./../libraries/bootstrap/bootstrap.js');
 
 //cropper plugin
-require('./../libraries/cropper/cropper.js');
+// require('./../libraries/cropper/cropper.js');
 
 //owl-graphics
-require('./../libraries/owl-graphics/owl-carousel/owl.carousel.min.js');
+// require('./../libraries/owl-graphics/owl-carousel/owl.carousel.min.js');
 
 //Light gallery
-require("./../libraries/light-gallery/js/lightGallery.min.js");
+// require("./../libraries/light-gallery/js/lightGallery.min.js");
 
 // loading our own css
 // TODO: minify these
