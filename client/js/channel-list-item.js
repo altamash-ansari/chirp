@@ -10,12 +10,12 @@ module.exports = React.createClass({
   render: function() {
     var channel    = this.props.channel;
     var channelUrl = Utils.channels.getUrl(channel.get('uid'),channel.get('name'));
-    var authtoken  = this.props.user.app.getHeaders().authtoken;
+    var access_token  = this.props.user.app.getHeaders().access_token;
     return (
       <div className="list-item animated fadeInDown">
         <div className="media">
           <a className = "media-left" href={channelUrl}>
-            <img alt="" className="c-image medium" src={Utils.channels.getProfileImgUrl(channel, authtoken)} data-holder-rendered="true" />
+            <img alt="" className="c-image medium" src={Utils.channels.getProfileImgUrl(channel, access_token)} data-holder-rendered="true" />
           </a>
           <div className="media-body">
             <div className="media">

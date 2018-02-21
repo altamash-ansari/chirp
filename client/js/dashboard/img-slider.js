@@ -27,12 +27,12 @@ module.exports.View = React.createClass({
   },
   render: function (argument) {
     var images    = this.props.images;
-    var authtoken = this.props.user.app.getHeaders().authtoken; 
+    var access_token = this.props.user.app.getHeaders().access_token; 
     return (
       <div ref='theImgGallery' className="owl-carousel c-img-gal">
           {
             images.map(function(image){
-              var imageUrl = image.url + "?AUTHTOKEN=" + authtoken;
+              var imageUrl = image.url + "?access_token=" + access_token;
               return (
                 <div className="item c-gal-item" style={{backgroundImage: 'url('+imageUrl+')'}} key={image.uid}>
                   <img className="hide" src={imageUrl}> </img>

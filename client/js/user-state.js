@@ -74,10 +74,10 @@ module.exports.Store = Reflux.createStore({
     var changedUser = changedUserData.data;
     // Current user profile is updated
     if(this.user && (changedUserData.type === 'updated') && (changedUser.get('uid') === this.user.get('uid'))){ 
-      if(!BuiltApp.getHeaders().authtoken){
+      if(!BuiltApp.getHeaders().access_token){
         return
       }
-      changedUser = changedUser.set('authtoken', BuiltApp.getHeaders().authtoken)
+      changedUser = changedUser.set('access_token', BuiltApp.getHeaders().access_token)
       BuiltApp.User.setSession(changedUser.toJSON()); // updates the session with user updates
       this.change(changedUser);
     } 

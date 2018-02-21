@@ -23,10 +23,10 @@ module.exports.channels = {
 	getUrl: function(uid, name) {
 		return '#/dashboard/channel/'+uid+'/'+name+'/'+'timeline';
 	},
-	getProfileImgUrl: function(channel, authtoken){
+	getProfileImgUrl: function(channel, access_token){
   var avatar_random = channel.get('avatar_random') || 0;
   if(channel.get('avatar'))
-    return channel.get('avatar').url+'?r='+ (avatar_random + 1)+'&AUTHTOKEN='+authtoken;
+    return channel.get('avatar').url+'?r='+ (avatar_random + 1)+'&access_token='+access_token;
   else
     return './img/profile-icon.png';
   },

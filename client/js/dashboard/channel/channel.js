@@ -98,9 +98,9 @@ module.exports.View = React.createClass({
   },
   getImageUrl: function(channel){
   var avatar_random = channel.avatar_random || 0;
-  var authtoken     = this.props.user.app.getHeaders().authtoken;
+  var access_token     = this.props.user.app.getHeaders().access_token;
   if(channel.avatar)
-    return channel.avatar.url+'?r='+ (avatar_random + 1)+'&AUTHTOKEN='+authtoken;
+    return channel.avatar.url+'?r='+ (avatar_random + 1)+'&access_token='+access_token;
   else
     return './img/profile-icon.png';
   },
