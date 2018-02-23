@@ -1,12 +1,20 @@
 const rest      = require('rest')
+const Built     = require('built.io')
 const masterKey = "blt313e0cb3131a7124"
 
-function getUserSession(builtApp){
-  return builtApp.User.getSession(true);
+function getUserSession(builtApp, accessToken){
+  return builtApp
+  .setAccessToken(accessToken)
+  .User
+  .getSession(true);
 }
 
 function getMasterApp(builtApp){
   return builtApp.setMasterKey(masterKey)
+}
+
+function getBuildApp(req){
+  return req.builtApp.persistSessionWith(Built.Session.MEMORY);
 }
 
 module.exports = {
@@ -15,12 +23,13 @@ module.exports = {
       req.logger.log("create Tweet Started")
       
       let that          = this;
-      let builtApp      = req.builtApp;
+      let builtApp      = getBuildApp(req);
       let AppMasterKey  = getMasterApp(builtApp);
       let comment_count = req.payload.data.comment_count; // By default the comment_count is set to undefined so all numeric operations fail
       let post_to       = req.payload.data.post_to;
       let images        = req.payload.data.images;
-      // let authtoken     = req.headers.authtoken;
+      let accessToken   = req.payload.access_token;
+      let AuthApp       = builtApp.setAccessToken(accessToken);
       let content       = req.payload.data.content || "";
       let userUid       = null;
       let mentions      = [];
@@ -37,7 +46,7 @@ module.exports = {
       
       let user_uids = [];
       
-      getMentionedUsersUid(usernames)
+      return getMentionedUsersUid(usernames)
       .then(function(mentioned){
         //Retrieve mentions
         mentions = mentioned;
@@ -45,7 +54,7 @@ module.exports = {
       })
       .then(function(){
         //Get current logged-in user
-        return getUserSession(builtApp)
+        return getUserSession(builtApp, accessToken)
         .then(function(user) {
           userUid = user.get('uid')
           return userUid;
@@ -104,11 +113,16 @@ module.exports = {
             return that.resError(req, res, "Access denined, You don't have sufficient permissions to post on this channel.");
           })
         }else{
-          constructTweet().save()
+          return constructTweet().save()
           .then(function(tweet){
             req.logger.log("create Tweet Ended")
             
             return that.resSuccess(req, res, tweet.toJSON());
+          })
+          .catch(function(err){
+            req.logger.error("create Tweet Error", err)
+    
+            return that.resError(req, res, err);
           })
         }
       })
@@ -120,7 +134,7 @@ module.exports = {
 
       //Constructs SDK object
       function constructTweet(){
-        return builtApp // App with current user's authtoken in it
+        return AuthApp // App with current user's authtoken in it
         .Class('tweet')
         .Object({
           comment_count: comment_count,
