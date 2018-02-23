@@ -17,11 +17,11 @@ module.exports = {
       let that          = this;
       let builtApp      = req.builtApp;
       let AppMasterKey  = getMasterApp(builtApp);
-      let comment_count = req.payload.comment_count; // By default the comment_count is set to undefined so all numeric operations fail
-      let post_to       = req.payload.post_to;
-      let images        = req.payload.images;
+      let comment_count = req.payload.data.comment_count; // By default the comment_count is set to undefined so all numeric operations fail
+      let post_to       = req.payload.data.post_to;
+      let images        = req.payload.data.images;
       // let authtoken     = req.headers.authtoken;
-      let content       = req.payload.content || "";
+      let content       = req.payload.data.content || "";
       let userUid       = null;
       let mentions      = [];
       let regex         = /(<([^>]+)>)/ig;
@@ -113,6 +113,8 @@ module.exports = {
         }
       })
       .catch(function(err){
+        req.logger.error("create Tweet Error", err)
+
         return that.resError(req, res, err);
       })
 
@@ -156,7 +158,7 @@ module.exports = {
         if (usernames.length === 0) {
           return utils.Promise.resolve(user_uids);
         } else {
-          return builtApp.Class('built_io_application_user')
+          return AppMasterKey.Class('built_io_application_user')
           .Query()
           .containedIn('username', usernames)
           .only('uid')
