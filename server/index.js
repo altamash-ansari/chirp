@@ -1,0 +1,164 @@
+const rest      = require('rest')
+const masterKey = "blt313e0cb3131a7124"
+
+function getUserSession(builtApp){
+  return builtApp.User.getSession(true);
+}
+
+function getMasterApp(builtApp){
+  return builtApp.setMasterKey(masterKey)
+}
+
+module.exports = {
+  "createTweet": function(req, res) {
+    let that          = this;
+    let builtApp      = req.builtApp;
+    let AppMasterKey  = getMasterApp(builtApp);
+    let comment_count = req.payload.comment_count; // By default the comment_count is set to undefined so all numeric operations fail
+    let post_to       = req.payload.post_to;
+    let images        = req.payload.images;
+    // let authtoken     = req.headers.authtoken;
+    let content       = req.payload.content || "";
+    let userUid       = null;
+    let mentions      = [];
+    let regex         = /(<([^>]+)>)/ig;
+    content           = content.replace(regex, ""); // Code to remove html tags
+    let channel       = null;
+
+    if(comment_count === undefined)
+      comment_count = 0;
+
+    let usernames = (content.match(/@[a-zA-Z0-9_.]+/g)||[]).filter(function(a, b, c) {
+      return (c.indexOf(a, b+1) == -1);
+    }).map(function(username) { return username.slice(1, username.length) });
+    
+    let user_uids = [];
+    
+    getMentionedUsersUid(usernames)
+    .then(function(mentioned){
+      //Retrieve mentions
+      mentions = mentioned;
+      return mentions;
+    })
+    .then(function(){
+      //Get current logged-in user
+      return getUserSession(builtApp)
+      .then(function(user) {
+        userUid = user.get('uid')
+        return userUid;
+      })
+    })
+    .then(function(){
+      if (post_to) {
+        AppMasterKey.Class('channel')
+        .Object(post_to)
+        .fetch()
+        .then(function(channelObj) {
+          channel = channelObj;
+          return AppMasterKey
+            .Class('channel_type')
+            .Object()
+            .set('uid', channel.get('type')[0])
+            .fetch()
+        })
+        .then(function(type){
+          let type    = type.get('type');
+          let canPost = channel.get('can_post') || [];
+          let admins  = channel.get('admins') || [];
+          let canRead = channel.get('members') || [];
+          if(isAllowedToPost(userUid, canRead, canPost, admins, type)){
+            let read  = channel.get('ACL').roles[0].uid;
+            let write = channel.get('ACL').roles[1].uid;
+            let ACL   = new Built.ACL();
+            if(type == 'private'){
+              ACL.setUserReadAccess('anonymous', false)
+              ACL.setUserWriteAccess('anonymous', false)
+              ACL.setUserDeleteAccess('anonymous', false)
+              ACL.setPublicReadAccess(false)
+              ACL.setRoleReadAccess(read, true)
+              ACL.setRoleReadAccess(write, true)
+            }else{
+              ACL.setPublicReadAccess('true');
+            }
+            return ACL;
+          }else{
+            throw new Error("Access denined");
+          }
+        })
+        .then(function(ACL){
+          return constructTweet()
+          .setACL(ACL)
+          .save()
+        })
+        .then(function(tweet){
+          return that.resSuccess(req, res, tweet.toJSON());
+        })
+        .catch(function(err){
+          return that.resError(req, res, "Access denined, You don't have sufficient permissions to post on this channel.");
+        })
+      }else{
+        constructTweet().save()
+        .then(function(tweet){
+          return that.resSuccess(req, res, tweet.toJSON());
+        })
+      }
+    })
+    .catch(function(err){
+      return that.resError(req, res, err);
+    })
+
+    //Constructs SDK object
+    function constructTweet(){
+      return builtApp // App with current user's authtoken in it
+      .Class('tweet')
+      .Object({
+        comment_count: comment_count,
+        post_to : post_to,
+        mentions: mentions,
+        content : content,
+        images  : images
+      })
+    }
+
+    function isAllowedToPost(userUid, canRead, canPost, admins, type){
+      var returnVal = false;
+      // Check if is admin if not, check if he/she is a poster
+      returnVal     = isUserAllowed(userUid, admins) ? true : isUserAllowed(userUid, canPost)? true : false;
+      if(type == 'private' && canPost.length === 0 && !returnVal)
+        returnVal = isUserAllowed(userUid, canRead)
+      if(type == 'public' && canPost.length === 0 && !returnVal)
+        returnVal = true;
+      return returnVal;
+    }
+
+    function isUserAllowed(currentUsr, allowedUsers){
+      var returnVal = false;
+      allowedUsers.forEach(function(user){
+        if(currentUsr == user)
+          returnVal = true;
+      })
+      return returnVal;
+    }
+    /*
+    Adds users in chirps mentions array
+    */
+    function getMentionedUsersUid(usernames) {
+      var user_uids = [];
+      if (usernames.length === 0) {
+        return when(user_uids);
+      } else {
+        return builtApp.Class('built_io_application_user')
+        .Query()
+        .containedIn('username', usernames)
+        .only('uid')
+        .exec()
+        .then(function(objects) {
+          user_uids = user_uids.concat(objects.map(function(obj) {
+            return obj.get('uid')
+          }));
+          return user_uids;
+        });
+      }
+    }
+  }
+}
