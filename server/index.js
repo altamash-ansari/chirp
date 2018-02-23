@@ -154,7 +154,7 @@ module.exports = {
       function getMentionedUsersUid(usernames) {
         var user_uids = [];
         if (usernames.length === 0) {
-          return when(user_uids);
+          return utils.Promise.resolve(user_uids);
         } else {
           return builtApp.Class('built_io_application_user')
           .Query()
