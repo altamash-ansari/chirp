@@ -11,6 +11,8 @@ function getMasterApp(builtApp){
 
 module.exports = {
   "createTweet": function(req, res) {
+    req.logger.log("create Tweet Started")
+    
     let that          = this;
     let builtApp      = req.builtApp;
     let AppMasterKey  = getMasterApp(builtApp);
@@ -91,14 +93,20 @@ module.exports = {
           .save()
         })
         .then(function(tweet){
+          req.logger.log("create Tweet Ended")
+          
           return that.resSuccess(req, res, tweet.toJSON());
         })
         .catch(function(err){
+          req.logger.error("create Tweet Error", err)
+          
           return that.resError(req, res, "Access denined, You don't have sufficient permissions to post on this channel.");
         })
       }else{
         constructTweet().save()
         .then(function(tweet){
+          req.logger.log("create Tweet Ended")
+          
           return that.resSuccess(req, res, tweet.toJSON());
         })
       }

@@ -14,6 +14,7 @@ module.exports = {
   "/v1/application/users": {
     "POST": {
       "_pre": function(req, res){
+        req.logger.log("application user post pre hook")
         var username      = req.bobjekt.get('username')
         var avatar_random = req.bobjekt.get('avatar_random');
         if(!username)
