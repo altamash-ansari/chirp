@@ -392,17 +392,6 @@
 //   }
 // });
 
-// Built.Extension.beforeSave('built_io_application_user', function(request, response) {
-//   var username      = request.object.get('username')
-//   var avatar_random = request.object.get('avatar_random');
-//   if(!username)
-//     request.object.set('username', request.object.get('email').split('@')[0]);
-//   if(!avatar_random)
-//     request.object.set('avatar_random', 1); 
- 
-//   return response.success();
-// });
-
 // Built.Extension.beforeSave('channel', function(request, response){
 //   var self          = this;
 //   var isUpdated     = (request.object.get('created_at') === request.object.get('updated_at'))? false : true; 
