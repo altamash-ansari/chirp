@@ -61,8 +61,8 @@ module.exports = {
             .set('uid', channel.get('type')[0])
             .fetch()
         })
-        .then(function(type){
-          let type    = type.get('type');
+        .then(function(typeObj){
+          let type    = typeObj.get('type');
           let canPost = channel.get('can_post') || [];
           let admins  = channel.get('admins') || [];
           let canRead = channel.get('members') || [];
