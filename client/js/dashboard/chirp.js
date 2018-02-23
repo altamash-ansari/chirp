@@ -76,15 +76,15 @@ var Store = module.exports.Store = Reflux.createStore({
   },
   onAddNewChirp: function(content, images, post_to){
     var self    = this;
-   // We keep the post_to property undefined if its not a channel post
-   var requestBody = {
-    content: content,
-    images : images  
-   }
-   if(post_to)
-    requestBody["post_to"] = post_to;
+    // We keep the post_to property undefined if its not a channel post
+    var requestBody = {
+      content: content,
+      images : images  
+    }
+    if(post_to)
+      requestBody["post_to"] = post_to;
     
-   BuiltApp.Extension.execute('createTweet',requestBody)
+    BuiltApp.Extension().post('/createTweet',requestBody, {})
     .catch(function(error){
       var error = "Notice:  "+error.entity.error_message+"\n Error(s): \t"+ JSON.stringify(error.entity.errors.error);
       $.notify(error, JSON.stringify(error))
