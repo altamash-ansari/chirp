@@ -22,8 +22,6 @@
 //     break;
 // }
 
-// //STAG
-
 // Built.initialize(API_KEY, 'panchi');
 // Built.setMasterKey(masterKey); // necessary for our API to work
 // Built.setURL(API_URL,'https');
