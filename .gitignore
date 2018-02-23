@@ -9,4 +9,3 @@ mochawesome-reports
 dump.rdb
 .vscode/
 package-lock.json
-client/bundle.js

@@ -59,6 +59,6 @@
   "scripts": {
     "watch": "./node_modules/.bin/watchify client/js/index.js -o client/bundle.js",
     "build": "./node_modules/.bin/gulp build",
-    "start": "npm run build; node app.js"
+    "start": "node app.js"
   }
 }
