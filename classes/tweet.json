@@ -1,0 +1,155 @@
+{
+  "created_at": "2013-08-18T11:24:02.000Z",
+  "updated_at": "2016-06-18T06:53:23.994Z",
+  "title": "Tweet",
+  "uid": "tweet",
+  "inbuilt_class": false,
+  "schema": [
+      {
+          "uid": "content",
+          "min": null,
+          "max": 420,
+          "format": "",
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "display_name": "Content",
+          "data_type": "text",
+          "_id": "5764efe3ef28a68540001ae8",
+          "unique": null,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "uid": "images",
+          "display_name": "images",
+          "data_type": "file",
+          "_id": "5764efe3ef28a68540001ae7",
+          "mandatory": false,
+          "multiple": true
+      },
+      {
+          "data_type": "reference",
+          "display_name": "Mentions",
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "reference_to": "built_io_application_user",
+          "uid": "mentions",
+          "_id": "5764efe3ef28a68540001ae6",
+          "mandatory": false,
+          "multiple": true
+      },
+      {
+          "reference_to": "built_io_application_user",
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "uid": "upvotes",
+          "display_name": "Upvotes",
+          "data_type": "reference",
+          "_id": "5764efe3ef28a68540001ae5",
+          "mandatory": false,
+          "multiple": true
+      },
+      {
+          "uid": "comment_count",
+          "data_type": "number",
+          "display_name": "Comment Count",
+          "max": null,
+          "min": null,
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "_id": "5764efe3ef28a68540001ae4",
+          "unique": null,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "data_type": "reference",
+          "display_name": "Comment Preview",
+          "uid": "comment_preview",
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "reference_to": "comment",
+          "_id": "5764efe3ef28a68540001ae3",
+          "mandatory": false,
+          "multiple": true
+      },
+      {
+          "data_type": "reference",
+          "display_name": "Channels",
+          "uid": "channels",
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "reference_to": "channel",
+          "_id": "5764efe3ef28a68540001ae2",
+          "mandatory": false,
+          "multiple": true
+      },
+      {
+          "data_type": "reference",
+          "display_name": "Channels",
+          "uid": "post_to",
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "reference_to": "channel",
+          "_id": "5764efe3ef28a68540001ae1",
+          "mandatory": false,
+          "multiple": true
+      }
+  ],
+  "last_activity": "2016-06-10T06:24:41.603Z",
+  "maintain_revisions": false,
+  "options": {
+      "inbuiltFields": {
+          "tag": false,
+          "location": false,
+          "publish": false
+      },
+      "title": "content"
+  },
+  "abilities": {
+      "_id": "526928fbdea172336b006856",
+      "delete_all_objects": false,
+      "delete_object": true,
+      "update_object": false,
+      "create_object": true,
+      "get_all_objects": true,
+      "get_one_object": true
+  },
+  "DEFAULT_ACL": {
+      "others": {
+          "read": true,
+          "create": true,
+          "delete": false,
+          "update": false
+      },
+      "users": [
+          {
+              "uid": "anonymous",
+              "read": true,
+              "update": false,
+              "delete": false,
+              "create": false,
+              "_id": "532d6089a48ae66c622097a0"
+          }
+      ]
+  },
+  "SYS_ACL": {}
+}

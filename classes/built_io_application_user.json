@@ -1,0 +1,329 @@
+{
+  "created_at": "2013-10-24T14:04:41.000Z",
+  "updated_at": "2015-02-27T09:38:05.619Z",
+  "title": "Application User",
+  "uid": "built_io_application_user",
+  "inbuilt_class": true,
+  "schema": [
+      {
+          "uid": "follows",
+          "reference_to": "built_io_application_user",
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "display_name": "Follows",
+          "data_type": "reference",
+          "unique": null,
+          "mandatory": false,
+          "multiple": true
+      },
+      {
+          "uid": "avatar",
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "display_name": "Avatar",
+          "data_type": "file",
+          "unique": null,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "uid": "about",
+          "min": null,
+          "max": 1000,
+          "format": "",
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "display_name": "about",
+          "data_type": "text",
+          "unique": null,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "uid": "avatar_random",
+          "min": null,
+          "max": null,
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "display_name": "Avatar Random",
+          "data_type": "number",
+          "unique": null,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "data_type": "reference",
+          "display_name": "Channels",
+          "uid": "channels",
+          "field_metadata": {
+              "allow_rich_text": false,
+              "multiline": false
+          },
+          "reference_to": "channel",
+          "unique": null,
+          "mandatory": false,
+          "multiple": true
+      },
+      {
+          "display_name": "Username",
+          "uid": "username",
+          "data_type": "text",
+          "field_metadata": {
+              "inbuilt_field": true
+          },
+          "min": null,
+          "max": null,
+          "format": null,
+          "unique": true,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "display_name": "Email",
+          "uid": "email",
+          "data_type": "text",
+          "field_metadata": {
+              "mandatory": true,
+              "title": "email",
+              "inbuilt_field": true
+          },
+          "format": "^[_a-zA-Z0-9\\-+]+(\\.[_a-zA-Z0-9\\-+]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[A-Za-z]{2,4})$",
+          "min": null,
+          "max": null,
+          "unique": true,
+          "mandatory": true,
+          "multiple": false
+      },
+      {
+          "display_name": "First Name",
+          "uid": "first_name",
+          "data_type": "text",
+          "field_metadata": {
+              "inbuilt_field": true
+          },
+          "min": null,
+          "max": null,
+          "format": null,
+          "unique": null,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "display_name": "Last Name",
+          "uid": "last_name",
+          "data_type": "text",
+          "field_metadata": {
+              "inbuilt_field": true
+          },
+          "min": null,
+          "max": null,
+          "format": null,
+          "unique": null,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "display_name": "Password",
+          "uid": "password",
+          "data_type": "text",
+          "field_metadata": {
+              "inbuilt_field": true
+          },
+          "min": null,
+          "max": null,
+          "format": null,
+          "unique": null,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "display_name": "Active",
+          "uid": "active",
+          "data_type": "boolean",
+          "field_metadata": {
+              "inbuilt_field": true
+          },
+          "unique": null,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "display_name": "Authtoken",
+          "uid": "authtokens",
+          "data_type": "text",
+          "field_metadata": {
+              "mandatory": false,
+              "inbuilt_field": true
+          },
+          "min": null,
+          "max": null,
+          "format": null,
+          "unique": null,
+          "mandatory": false,
+          "multiple": true
+      },
+      {
+          "display_name": "Device Type",
+          "uid": "device_type",
+          "data_type": "text",
+          "field_metadata": {
+              "inbuilt_field": true
+          },
+          "min": null,
+          "max": null,
+          "format": null,
+          "unique": null,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "display_name": "Authdata",
+          "uid": "auth_data",
+          "data_type": "group",
+          "field_metadata": {
+              "mandatory": false,
+              "inbuilt_field": true
+          },
+          "unique": null,
+          "mandatory": false,
+          "multiple": false,
+          "schema": [
+              {
+                  "multiple": false,
+                  "mandatory": false,
+                  "unique": null,
+                  "field_metadata": {
+                      "inbuilt_field": true
+                  },
+                  "data_type": "group",
+                  "uid": "google",
+                  "display_name": "Google",
+                  "schema": [
+                      {
+                          "multiple": false,
+                          "mandatory": false,
+                          "unique": null,
+                          "field_metadata": {
+                              "inbuilt_field": true
+                          },
+                          "data_type": "text",
+                          "uid": "email",
+                          "display_name": "Email"
+                      },
+                      {
+                          "multiple": false,
+                          "mandatory": false,
+                          "unique": null,
+                          "field_metadata": {
+                              "inbuilt_field": true
+                          },
+                          "data_type": "mixed",
+                          "uid": "user_profile",
+                          "display_name": "Google User Profile"
+                      }
+                  ]
+              },
+              {
+                  "multiple": false,
+                  "mandatory": false,
+                  "unique": null,
+                  "field_metadata": {
+                      "inbuilt_field": true
+                  },
+                  "data_type": "group",
+                  "uid": "facebook",
+                  "display_name": "Facebook",
+                  "schema": [
+                      {
+                          "multiple": false,
+                          "mandatory": false,
+                          "unique": null,
+                          "field_metadata": {
+                              "inbuilt_field": true
+                          },
+                          "data_type": "text",
+                          "uid": "user_id",
+                          "display_name": "Facebook User Id"
+                      },
+                      {
+                          "multiple": false,
+                          "mandatory": false,
+                          "unique": null,
+                          "field_metadata": {
+                              "inbuilt_field": true
+                          },
+                          "data_type": "mixed",
+                          "uid": "user_profile",
+                          "display_name": "Facebook User Profile"
+                      }
+                  ]
+              },
+              {
+                  "multiple": false,
+                  "mandatory": false,
+                  "unique": null,
+                  "field_metadata": {
+                      "inbuilt_field": true
+                  },
+                  "data_type": "group",
+                  "uid": "twitter",
+                  "display_name": "Twitter",
+                  "schema": [
+                      {
+                          "multiple": false,
+                          "mandatory": false,
+                          "unique": null,
+                          "field_metadata": {
+                              "inbuilt_field": true
+                          },
+                          "data_type": "text",
+                          "uid": "user_id",
+                          "display_name": "Twitter User Id"
+                      },
+                      {
+                          "multiple": false,
+                          "mandatory": false,
+                          "unique": null,
+                          "field_metadata": {
+                              "inbuilt_field": true
+                          },
+                          "data_type": "mixed",
+                          "uid": "user_profile",
+                          "display_name": "Twitter User Profile"
+                      }
+                  ]
+              }
+          ]
+      }
+  ],
+  "last_activity": "2015-08-06T09:12:33.056Z",
+  "options": {
+      "title": "username"
+  },
+  "abilities": {
+      "_id": "526928f9dea172336b0067a1",
+      "delete_all_objects": true,
+      "delete_object": true,
+      "update_object": true,
+      "create_object": true,
+      "get_all_objects": true,
+      "get_one_object": true
+  },
+  "DEFAULT_ACL": {
+      "others": {
+          "read": true,
+          "create": false,
+          "update": false,
+          "delete": false
+      }
+  },
+  "SYS_ACL": {}
+}

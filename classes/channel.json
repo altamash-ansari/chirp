@@ -1,0 +1,140 @@
+{
+  "created_at": "2015-02-27T09:33:17.268Z",
+  "updated_at": "2015-03-09T15:11:30.177Z",
+  "title": "Channel",
+  "uid": "channel",
+  "inbuilt_class": false,
+  "schema": [
+      {
+          "data_type": "text",
+          "display_name": "name",
+          "uid": "name",
+          "format": "",
+          "max": null,
+          "min": null,
+          "field_metadata": {
+              "allow_rich_text": false,
+              "multiline": false
+          },
+          "_id": "54fdb8222ed73db00ba4e7dc",
+          "unique": true,
+          "mandatory": true,
+          "multiple": false
+      },
+      {
+          "data_type": "file",
+          "display_name": "avatar",
+          "uid": "avatar",
+          "field_metadata": {
+              "allow_rich_text": false,
+              "multiline": false
+          },
+          "_id": "54fdb8222ed73db00ba4e7db",
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "data_type": "text",
+          "display_name": "Sub title",
+          "uid": "sub_title",
+          "format": "",
+          "max": null,
+          "min": null,
+          "field_metadata": {
+              "allow_rich_text": false,
+              "multiline": true
+          },
+          "_id": "54fdb8222ed73db00ba4e7da",
+          "unique": null,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "data_type": "reference",
+          "display_name": "members",
+          "uid": "members",
+          "field_metadata": {
+              "allow_rich_text": false,
+              "multiline": false
+          },
+          "reference_to": "built_io_application_user",
+          "_id": "54fdb8222ed73db00ba4e7d9",
+          "mandatory": false,
+          "multiple": true
+      },
+      {
+          "data_type": "reference",
+          "display_name": "Admins",
+          "uid": "admins",
+          "field_metadata": {
+              "allow_rich_text": false,
+              "multiline": false
+          },
+          "reference_to": "built_io_application_user",
+          "_id": "54fdb8222ed73db00ba4e7d8",
+          "mandatory": true,
+          "multiple": true
+      },
+      {
+          "data_type": "reference",
+          "display_name": "CanPost",
+          "uid": "can_post",
+          "field_metadata": {
+              "allow_rich_text": false,
+              "multiline": false
+          },
+          "reference_to": "built_io_application_user",
+          "_id": "54fdb8222ed73db00ba4e7d7",
+          "mandatory": false,
+          "multiple": true
+      },
+      {
+          "data_type": "number",
+          "display_name": "Avatar Random",
+          "uid": "avatar_random",
+          "max": null,
+          "min": null,
+          "field_metadata": {
+              "allow_rich_text": false,
+              "multiline": false
+          },
+          "_id": "54fdb8222ed73db00ba4e7d6",
+          "unique": null,
+          "mandatory": false,
+          "multiple": false
+      },
+      {
+          "data_type": "reference",
+          "display_name": "Type",
+          "uid": "type",
+          "field_metadata": {
+              "multiline": false,
+              "allow_rich_text": false
+          },
+          "reference_to": "channel_type",
+          "_id": "54fdb8222ed73db00ba4e7d5",
+          "mandatory": true,
+          "multiple": true
+      }
+  ],
+  "last_activity": "2015-03-13T06:03:53.856Z",
+  "maintain_revisions": false,
+  "options": {
+      "title": "name"
+  },
+  "abilities": {
+      "delete_all_objects": true,
+      "delete_object": true,
+      "update_object": true,
+      "create_object": true,
+      "get_all_objects": true,
+      "get_one_object": true
+  },
+  "DEFAULT_ACL": {
+      "others": {
+          "read": true,
+          "create": true
+      }
+  },
+  "SYS_ACL": {}
+}

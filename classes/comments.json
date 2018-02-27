@@ -1,0 +1,71 @@
+{
+  "created_at": "2014-12-26T13:30:13.933Z",
+  "updated_at": "2015-01-07T14:59:27.521Z",
+  "title": "Comment",
+  "uid": "comment",
+  "inbuilt_class": false,
+  "schema": [
+    {
+      "data_type": "text",
+      "display_name": "Content",
+      "uid": "content",
+      "format": "",
+      "max": null,
+      "min": null,
+      "field_metadata": {
+        "multiline": false,
+        "allow_rich_text": false
+      },
+      "_id": "54ad49cf5684c8854be882e4",
+      "unique": null,
+      "mandatory": false,
+      "multiple": false
+    },
+    {
+      "data_type": "reference",
+      "display_name": "Chirp UID",
+      "uid": "chirp_uid",
+      "field_metadata": {
+        "multiline": false,
+        "allow_rich_text": false
+      },
+      "reference_to": "tweet",
+      "_id": "54ad49cf5684c8854be882e3",
+      "mandatory": true,
+      "multiple": true
+    },
+    {
+      "data_type": "reference",
+      "display_name": "Mentions",
+      "uid": "mentions",
+      "field_metadata": {
+        "multiline": false,
+        "allow_rich_text": false
+      },
+      "reference_to": "built_io_application_user",
+      "_id": "54ad49cf5684c8854be882e2",
+      "mandatory": false,
+      "multiple": true
+    }
+  ],
+  "last_activity": "2015-03-16T05:24:14.338Z",
+  "maintain_revisions": false,
+  "options": {
+    "title": "content"
+  },
+  "abilities": {
+    "delete_all_objects": true,
+    "delete_object": true,
+    "update_object": true,
+    "create_object": true,
+    "get_all_objects": true,
+    "get_one_object": true
+  },
+  "DEFAULT_ACL": {
+    "others": {
+      "read": true,
+      "create": true
+    }
+  },
+  "SYS_ACL": {}
+}

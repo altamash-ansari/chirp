@@ -22,8 +22,6 @@
 //     break;
 // }
 
-// //STAG
-
 // Built.initialize(API_KEY, 'panchi');
 // Built.setMasterKey(masterKey); // necessary for our API to work
 // Built.setURL(API_URL,'https');
@@ -392,17 +390,6 @@
 //       return response.success();
 //     });
 //   }
-// });
-
-// Built.Extension.beforeSave('built_io_application_user', function(request, response) {
-//   var username      = request.object.get('username')
-//   var avatar_random = request.object.get('avatar_random');
-//   if(!username)
-//     request.object.set('username', request.object.get('email').split('@')[0]);
-//   if(!avatar_random)
-//     request.object.set('avatar_random', 1); 
- 
-//   return response.success();
 // });
 
 // Built.Extension.beforeSave('channel', function(request, response){
