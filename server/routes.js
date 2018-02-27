@@ -27,6 +27,53 @@ module.exports = {
           notice: "test"
         })
       }
+    },
+    "/getAllTweets" : {
+      GET : function(req, res) {
+        var chirpUid  = req.body.chirp_uid
+        var authtoken = req.headers.authtoken || req.headers.access_token
+
+        var bapp      = req.builtApp
+        var that      = this
+        
+        req.logger.log(chirpUid + " " + authtoken)
+        
+        // Fetch Built Class Query instance and call exec()
+        return bapp.Class("tweet").Query()
+        .exec()
+        .then(function(tweets) {
+           // Fetches all objects from Tweet class
+           return that.resSuccess(req, res, {
+             tweets : tweets
+           })
+        })
+        .catch(function(err) {
+          // Logs any error that occurs while executing this application
+          req.logger.log(err)
+          return that.resError(req, res, err)
+        })
+      }
     }
   }
 }
+
+Built.Extension.define('like', function(request, response) {
+  var chirp_uid = request.body.chirp_uid;
+  var authtoken = request.headers.authtoken;
+  getUserSession(authtoken)
+  .then(function(user){
+    return user.get('uid');
+  })
+  .then(function(uid){
+    AppMasterKey.Class('tweet')
+      .Object(chirp_uid)
+      .pushValue('upvotes', uid)
+      .timeless()
+      .save()
+      .then(function(tweet){
+        return response.success(tweet.toJSON())
+      },function(error){
+        return response.error(error);
+      });
+  })
+});
