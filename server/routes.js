@@ -56,24 +56,3 @@ module.exports = {
     }
   }
 }
-
-Built.Extension.define('like', function(request, response) {
-  var chirp_uid = request.body.chirp_uid;
-  var authtoken = request.headers.authtoken;
-  getUserSession(authtoken)
-  .then(function(user){
-    return user.get('uid');
-  })
-  .then(function(uid){
-    AppMasterKey.Class('tweet')
-      .Object(chirp_uid)
-      .pushValue('upvotes', uid)
-      .timeless()
-      .save()
-      .then(function(tweet){
-        return response.success(tweet.toJSON())
-      },function(error){
-        return response.error(error);
-      });
-  })
-});
