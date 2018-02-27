@@ -7,7 +7,7 @@ var app = Built.App('bltd5a724a244ef9c9c')
 .setMasterKey('blt313e0cb3131a7124')
 
 var extensionSDK = app.Extension({
-	secret_key     : 'gochirp',
+	secret_key     : 'gochirp_test',
 	extension_key	 : 'blt_ext_default_chirp',
 	static         : __dirname + '/client',
 	routes         : require('./server/routes')
