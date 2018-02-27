@@ -1,10 +1,10 @@
 var Built = require('built-extension-sdk')
 
 // Initiate application
-var app = Built.App('bltd5a724a244ef9c9c')
+var app = Built.App('blt3f2adfc6b05abcf1')
 .setHost("stag-api.built.io")
 .setProtocol("https")
-.setMasterKey('blt313e0cb3131a7124')
+.setMasterKey('blt9291ac481447fcd0')
 
 var extensionSDK = app.Extension({
 	secret_key     : 'gochirp',
