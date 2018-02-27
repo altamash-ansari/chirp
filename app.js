@@ -8,7 +8,7 @@ var app = Built.App('bltd5a724a244ef9c9c')
 
 var extensionSDK = app.Extension({
 	secret_key     : 'gochirp',
-	extension_key	 : 'blt_ext_default',
+	extension_key	 : 'blt_ext_default_chirp',
 	static         : __dirname + '/client',
 	routes         : require('./server/routes')
 })
