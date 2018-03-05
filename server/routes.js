@@ -36,7 +36,9 @@ module.exports = {
         var bapp      = req.builtApp
         var that      = this
         
-        req.logger.log(chirpUid + " " + authtoken)
+        req.logger.log(req.body)
+
+        req.logger.log(req.headers)
         
         // Fetch Built Class Query instance and call exec()
         return bapp.Class("tweet").Query()
