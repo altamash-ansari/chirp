@@ -69,10 +69,13 @@ module.exports = {
         var authtoken = req.headers.authtoken
         var that      = this
 
+        var builtApp = req.builtApp
+        builtApp     = builtApp.setMasterKey(masterKey)
+
         req.logger.log(req.body)
         req.logger.log(req.headers.authtoken + " " + req.headers.access_token)
         
-        return getUserSession(req.builtApp, authtoken)
+        return getUserSession(builtApp, authtoken)
         .then(function(userSession) {
           req.logger.log(userSession)
   
