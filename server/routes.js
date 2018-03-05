@@ -61,10 +61,11 @@ module.exports = {
       POST : function(req, res) {
         var chirp_uid = req.body.chirp_uid
         var authtoken = req.headers.authtoken
+        var that      = this
 
+        req.logger.log(req.body)
         req.logger.log(req.headers.authtoken + " " + req.headers.access_token)
         
-        var that      = this
         return getUserSession(req.builtApp, authtoken)
         .then(function(userSession) {
           req.logger.log(userSession)
