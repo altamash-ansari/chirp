@@ -27,6 +27,32 @@ module.exports = {
           notice: "test"
         })
       }
+    },
+    "/getAllTweets" : {
+      GET : function(req, res) {
+        var chirpUid  = req.body.chirp_uid
+        var authtoken = req.headers.authtoken || req.headers.access_token
+    
+        var bapp      = req.builtApp
+        var that      = this
+        
+        req.logger.log(chirpUid + " " + authtoken)
+        
+        // Fetch Built Class Query instance and call exec()
+        return bapp.Class("tweet").Query()
+        .exec()
+        .then(function(tweets) {
+           // Fetches all objects from Tweet class
+           return that.resSuccess(req, res, {
+             tweets : tweets
+           })
+        })
+        .catch(function(err) {
+          // Logs any error that occurs while executing this application
+          req.logger.log(err)
+          return that.resError(req, res, err)
+        })
+      }
     }
   }
 }
