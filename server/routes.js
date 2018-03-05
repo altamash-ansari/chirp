@@ -59,8 +59,8 @@ module.exports = {
     },
     "/like" : {
       GET : function(req, res) {
-        var chirp_uid = request.body.chirp_uid
-        var authtoken = request.headers.authtoken
+        var chirp_uid = req.body.chirp_uid
+        var authtoken = req.headers.authtoken
         var that      = this
   
         return getUserSession(req.builtApp, authtoken)
