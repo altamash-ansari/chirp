@@ -70,7 +70,12 @@ module.exports = {
           return that.resSuccess(req, res, {
             response : "Success"
           })
-        }) 
+        })
+        .catch(function(error) {
+          req.logger.log(error)
+
+          return that.resError(req, res, "Error")
+        })
       }
     }
   }
