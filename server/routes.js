@@ -38,6 +38,7 @@ module.exports = {
         
         req.logger.log(req.body)
 
+        req.logger.log(authtoken)
         // req.logger.log(req.headers)
         
         // Fetch Built Class Query instance and call exec()
@@ -54,6 +55,22 @@ module.exports = {
           req.logger.log(err)
           return that.resError(req, res, err)
         })
+      }
+    },
+    "/like" : {
+      GET : function(req, res) {
+        var chirp_uid = request.body.chirp_uid
+        var authtoken = request.headers.authtoken
+        var that      = this
+  
+        return getUserSession(req.builtApp, authtoken)
+        .then(function(userSession) {
+          req.logger.log(userSession)
+  
+          return that.resSuccess(req, res, {
+            response : "Success"
+          })
+        }) 
       }
     }
   }
