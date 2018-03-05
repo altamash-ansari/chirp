@@ -73,11 +73,11 @@ module.exports = {
         builtApp     = builtApp.setMasterKey(masterKey)
 
         req.logger.log(req.body)
-        req.logger.log(req.headers.authtoken + " " + req.headers.access_token)
+        // req.logger.log(req.headers.authtoken + " " + req.headers.access_token)
         
         return getUserSession(builtApp, authtoken)
         .then(function(userSession) {
-          req.logger.log("userSession " + userSession)
+          req.logger.log("userSession")
   
           return that.resSuccess(req, res, {
             response : "Success"
