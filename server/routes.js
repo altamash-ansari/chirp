@@ -8,7 +8,13 @@ function getUserSession(builtApp, accessToken){
   return builtApp
   .setAccessToken(accessToken)
   .User
-  .getSession(true);
+  .getSession(true)
+  then(function(data) {
+    req.logger.log(data)
+  })
+  .catch(function(error) {
+    req.logger.log(error)
+  })
 }
 
 function getMasterApp(builtApp){
