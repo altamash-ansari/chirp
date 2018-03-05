@@ -77,7 +77,7 @@ module.exports = {
         
         return getUserSession(builtApp, authtoken)
         .then(function(userSession) {
-          req.logger.log(userSession)
+          req.logger.log("userSession " + userSession)
   
           return that.resSuccess(req, res, {
             response : "Success"
