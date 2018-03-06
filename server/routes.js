@@ -1,8 +1,8 @@
 const rest      = require('rest')
 const Built     = require('built.io')
 const when      = require('when')
-const API_KEY   = "blt3f2adfc6b05abcf1"
-const masterKey = "blt9291ac481447fcd0"
+const API_KEY   = "blt7a4972bd733522de"
+const masterKey = "blte6a5a7825c294717"
 
 function getUserSession(builtApp, accessToken){
   return builtApp
@@ -28,7 +28,7 @@ function getBuiltApp(req){
 module.exports = {
   "/v1/functions": {
     "/test": {
-      "GET": function(req, res){
+      GET : function(req, res){
         return this.resSuccess(req, res, {
           notice: "test"
         })
