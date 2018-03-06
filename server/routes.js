@@ -69,8 +69,9 @@ module.exports = {
         var authtoken = req.headers.authtoken
         var that      = this
 
-        var builtApp = req.builtApp
-        builtApp     = builtApp.setMasterKey(masterKey)
+        var builtApp  = req.builtApp
+        req.logger.log("Master Key : " + masterKey)
+        builtApp      = builtApp.setMasterKey(masterKey)
 
         req.logger.log(req.body)
         // req.logger.log(req.headers.authtoken + " " + req.headers.access_token)
