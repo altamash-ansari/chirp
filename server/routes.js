@@ -5,8 +5,9 @@ const API_KEY   = "blt7a4972bd733522de"
 const masterKey = "blte6a5a7825c294717"
 
 function getUserSession(builtApp, accessToken){
+  req.logger.log("Authtoken : " + accessToken)
   return builtApp
-  .setAccessToken(accessToken)
+  .setAuthToken(accessToken)
   .User
   .getSession(true)
   then(function(data) {
@@ -38,7 +39,6 @@ module.exports = {
       GET : function(req, res) {
         var chirpUid  = req.body.chirp_uid
         var authtoken = req.headers.authtoken || req.headers.access_token
-    
         var bapp      = req.builtApp
         var that      = this
         
